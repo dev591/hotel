@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --color-charcoal: #161412;
+  --color-charcoal-soft: #1f1c19;
+  --color-cream: #f4eee3;
+  --color-cream-dim: #e9e1d2;
+  --color-emerald: #0e3b2e;
+  --color-emerald-light: #1a5a46;
+  --color-gold: #c8a96a;
+  --color-gold-soft: #ddc896;
+
+  --background: var(--color-charcoal);
+  --foreground: var(--color-cream);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-charcoal: var(--color-charcoal);
+  --color-charcoal-soft: var(--color-charcoal-soft);
+  --color-cream: var(--color-cream);
+  --color-cream-dim: var(--color-cream-dim);
+  --color-emerald: var(--color-emerald);
+  --color-emerald-light: var(--color-emerald-light);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  scroll-behavior: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+.gold-rule {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold) 50%,
+    transparent
+  );
+  height: 1px;
+}
+
+.day-picker-wrap .rdp-root {
+  --rdp-accent-color: var(--color-gold);
+  --rdp-accent-background-color: color-mix(in srgb, var(--color-gold) 25%, transparent);
+  --rdp-today-color: var(--color-gold);
+  --rdp-day-height: 2.5rem;
+  --rdp-day-width: 2.5rem;
+  color: var(--color-cream);
+}
+
+.day-picker-wrap .rdp-day_button {
+  color: var(--color-cream);
+}
+
+.day-picker-wrap .rdp-selected .rdp-day_button {
+  color: var(--color-charcoal);
+}
+
+.day-picker-wrap .rdp-weekday {
+  color: color-mix(in srgb, var(--color-cream) 60%, transparent);
+}
+
+.day-picker-wrap .rdp-nav button {
+  color: var(--color-cream);
+}
+
+.day-picker-wrap .rdp-month_caption {
+  color: var(--color-cream);
+}

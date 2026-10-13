@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// RoomType: "STANDARD" | "DELUXE" | "SUITE" | "PRESIDENTIAL" (validated in app code; sqlite has no native enum)
+// BookingStatus: "PENDING" | "CONFIRMED" | "CANCELLED" (validated in app code; sqlite has no native enum)
+
+model Room {
+  id          String    @id @default(cuid())
+  name        String
+  type        String
+  description String
+  pricePerNight Float
+  capacity    Int
+  images      String
+  amenities   String
+  totalUnits  Int       @default(3)
+  createdAt   DateTime  @default(now())
+  bookings    Booking[]
+}
+
+model Booking {
+  id         String        @id @default(cuid())
+  roomId     String
+  room       Room          @relation(fields: [roomId], references: [id])
+  guestName  String
+  guestEmail String
+  guestPhone String
+  checkIn    DateTime
+  checkOut   DateTime
+  guests     Int
+  totalPrice Float
+  status     String        @default("PENDING")
+  createdAt  DateTime      @default(now())
+}
+
+model AdminUser {
+  id           String @id @default(cuid())
+  email        String @unique
+  passwordHash String
+}
